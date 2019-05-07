@@ -102,3 +102,15 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# dataset
+MyYOLO/data/
+
+# checkpoint
+MyYOLO/checkpoint/
+
+# test models
+MyYOLO/test_model/
+
+# logs
+MyYOLO/logs/
