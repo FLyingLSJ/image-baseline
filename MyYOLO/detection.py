@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser(description='TensorFlow Detection Training')
 # Datasets
 parser.add_argument('-dd', '--data_dir', default='car', type=str)
 # Checkpoints
-parser.add_argument('-ckptd', '--checkpoint_dir', default='D:\code\MyYOLO_ljf\MyYOLO\checkpoint\YOLOv3\darknet53', type=str, metavar='PATH',
+parser.add_argument('-ckptd', '--checkpoint_dir', default='checkpoint/YOLOv3/darknet53', type=str, metavar='PATH',
                     help='path to save checkpoint (default: checkpoint), if you want to train a new model, please remove the checkpoint dir')
 parser.add_argument('-sr', '--save_rate', default=150, type=int, metavar='PATH',
                     help='save rate which will to save model(default: 500)')
@@ -29,7 +29,7 @@ parser.add_argument('-a', '--arch', default='yolov3', metavar='ARCH',
 parser.add_argument('-nn', '--net_name', default='darknet53', metavar='NET',
                     help='net of the arch')
 # Train or Predict
-parser.add_argument('-t', '--training', default='False', type=str, metavar='N',
+parser.add_argument('-t', '--training', default='True', type=str, metavar='N',
                     help='predict model on test set')
 # Train
 parser.add_argument('-vr', '--val_rate', default=50, type=int, metavar='N',
