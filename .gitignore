@@ -118,3 +118,6 @@ MyYOLO/logs/
 # wing file
 *.wpu
 *.wpr
+
+# idea
+MyYOLO/.idea/
