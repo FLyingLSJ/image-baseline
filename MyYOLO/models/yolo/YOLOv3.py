@@ -240,7 +240,7 @@ class YOLOv3(object):
                 print(iou.shape)
                 # get best confidence for each grid cell
                 # 置信度只有一个维度，求最大值还是他自己，没有意义
-                best_confidence = tf.reduce_max(confidence_hat, axis=-2, keepdims=True) # (？， ？, ？, 5，1)
+                best_confidence = tf.reduce_max(confidence_hat, axis=-1, keepdims=True) # (？， ？, ？, 5，1)
                 # best_confidence = tf.reduce_max(confidence_hat, axis=[1,2], keepdims=True)
                 best_confidence_mask = tf.cast(confidence_hat >= best_confidence, tf.float32) #  (？， ？, ？, 5，1)
                 self.best_confidence_mask_test = best_confidence_mask
