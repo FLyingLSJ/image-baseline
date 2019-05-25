@@ -86,14 +86,14 @@ def test(data_dir, net_name, ensamble, num_ensamble, num_ensamble_model, return_
                         box = np.concatenate((box_xy, box_wh), axis=-1)
 
                         draw(result_path, test_list[1], box, draw_image,score)
-
+                        print("正在预测第{}张图片".format(num))
                     num += 1
 
                 except StopIteration:
                     break
             
             if ensamble == 'False':
-                print('fps: %.3f' % (float(num) / total_time))
+                print('fps: %.3f' % (float(num)*14 / total_time))
 
 def draw(result_path, image_name, boxes, draw_image,score):
     result_csv_path = os.path.join(result_path + 'result.csv')
@@ -101,7 +101,7 @@ def draw(result_path, image_name, boxes, draw_image,score):
         image = cv2.imread(image_name)
         line = image_name.split(os.sep)[-1] + ','
 
-        print(boxes)
+        # print(boxes)
         for id ,box in enumerate(boxes):
             x, y, w, h = box
 
@@ -116,12 +116,12 @@ def draw(result_path, image_name, boxes, draw_image,score):
             y2 = min(image.shape[0], np.floor(y + h + 0.5).astype(int))
 
             line += '{0}_{1}_{2}_{3};'.format(x1, y1, x2 - x1, y2 - y1)
-            print(draw_image)
+            # print(draw_image)
             if draw_image:
-                cv2.putText(image, "score:{}".format(score[id]), (x2-10, y2+10), cv2.FONT_HERSHEY_PLAIN, 2.0, (0, 0, 255), 2)
+                cv2.putText(image, "s:%.2f"%score[id], (x1+10, y1+20), cv2.FONT_HERSHEY_PLAIN, 1.2, (0, 0, 255), 2)
                 cv2.rectangle(image, (x1, y1), (x2, y2), (255, 0, 0), 2)
-        cv2.imshow("img",image)
-        cv2.waitKey(0)
+        # cv2.imshow("img",image)
+        # cv2.waitKey(0)
         file.write(line[:-1] + '\n')
         if draw_image:
             image_path = os.path.join(result_path, image_name.split(os.sep)[-1])

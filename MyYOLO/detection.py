@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser(description='TensorFlow Detection Training')
 # Datasets
 parser.add_argument('-dd', '--data_dir', default='car', type=str)
 # Checkpoints
-parser.add_argument('-ckptd', '--checkpoint_dir', default='checkpoint/YOLOv3/darknet53', type=str, metavar='PATH',
+parser.add_argument('-ckptd', '--checkpoint_dir', default='checkpoint/YOLOv3/darknet53-20', type=str, metavar='PATH',
                     help='path to save checkpoint (default: checkpoint), if you want to train a new model, please remove the checkpoint dir')
 parser.add_argument('-sr', '--save_rate', default=150, type=int, metavar='PATH',
                     help='save rate which will to save model(default: 500)')
@@ -29,7 +29,7 @@ parser.add_argument('-a', '--arch', default='yolov3', metavar='ARCH',
 parser.add_argument('-nn', '--net_name', default='darknet53', metavar='NET',
                     help='net of the arch')
 # Train or Predict
-parser.add_argument('-t', '--training', default='True', type=str, metavar='N',
+parser.add_argument('-t', '--training', default='False', type=str, metavar='N',
                     help='predict model on test set')
 # Train
 parser.add_argument('-vr', '--val_rate', default=50, type=int, metavar='N',
@@ -69,9 +69,9 @@ parser.add_argument('-ds', '--decay_steps', default=2000, type=int, metavar='N',
 # NMS config
 parser.add_argument('-mb', '--max_boxes', default=35, type=int, metavar='N',
                     help='the max boxes of nms')
-parser.add_argument('-it', '--iou_threshold', default=0.1, type=float, metavar='N',
+parser.add_argument('-it', '--iou_threshold', default=0.5, type=float, metavar='N',
                     help='the nms iou threshold')
-parser.add_argument('-st', '--score_threshold', default=0.8, type=float, metavar='N',
+parser.add_argument('-st', '--score_threshold', default=0.4, type=float, metavar='N',
                     help='the yolo score threshold')# 原来是0.3
 # Device options
 parser.add_argument('--gpu-id', default='0', type=str,
